@@ -3,8 +3,9 @@ export const player = {
     y: 0,
     width: 30,
     height: 30,
-    color: "yellow",
-    life: 3,
+    color: "blue",
+    life: 10,
+    score: 0,
 };
 
 export function initPlayer(canvas) {
