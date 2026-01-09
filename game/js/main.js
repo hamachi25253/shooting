@@ -14,13 +14,31 @@ export const bullets = [];
 const BULLET_SPEED = -50;
 
 function tryShoot() {
+
+
+
     bullets.push({
         x: player.x,
         y: player.y,
-        width: 20,    
-        height: 50 ,
+        width: 20,
+        height: 50,
         vy: BULLET_SPEED,
-    })
+    },
+
+        {
+            x: player.x,
+            y: player.y,
+            width: 20,
+            height: 50,
+            vy: BULLET_SPEED,
+        },
+        {
+            x: player.x,
+            y: player.y,
+            width: 20,
+            height: 50,
+            vy: BULLET_SPEED,
+        })
 }
 
 function updateScore() {
@@ -40,6 +58,14 @@ window.addEventListener("keydown", (e) => {
         if (player.x < canvas.width - player.width - 10) {
             player.x += 10;
         }
+    } else if (e.key === "ArrowUp") {
+        if (player.y < canvas.height - player.height - 10) {
+            player.y -= 10;
+        }
+    } else if (e.key === "ArrowDown") {
+        if (player.y < canvas.height - player.height - 10) {
+            player.y += 10;
+        }
     } else if (e.code === "Space") {
         tryShoot();
     }
@@ -53,14 +79,14 @@ function update() {
             bullets.splice(i, 1);
         }
     }
-    spawnEnemy(canvas);    
+    spawnEnemy(canvas);
     updateEnemies(canvas);
     handleCollisions();
     updateScore();
 }
 
 function draw() {
-    ctx.fillStyle = "black"; 
+    ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawPlayer(ctx);
